@@ -16,8 +16,8 @@
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.apache.nutch</groupId>
@@ -25,14 +25,90 @@
         <version>1.13-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-  <artifactId>nutch-plugins</artifactId>
-  <packaging>pom</packaging>
+    <artifactId>nutch-plugins</artifactId>
+    <packaging>pom</packaging>
 
-  <name>nutch-plugins</name>
-  <url>http://nutch.apache.org</url>
+    <name>nutch-plugins</name>
+    <url>http://nutch.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <modules>
+        <module>creativecommons</module>
+        <module>feed</module>
+        <module>headings</module>
+        <module>index-anchor</module>
+        <module>index-basic</module>
+        <module>index-geoip</module>
+        <module>index-links</module>
+        <module>index-metadata</module>
+        <module>index-more</module>
+        <module>index-replace</module>
+        <module>index-static</module>
+        <module>indexer-cloudsearch</module>
+        <module>indexer-dummy</module>
+        <module>indexer-elastic</module>
+        <module>indexer-solr</module>
+        <module>language-identifier</module>
+        <module>lib-htmlunit</module>
+        <module>lib-http</module>
+        <module>lib-nekohtml</module>
+        <module>lib-regex-filter</module>
+        <module>lib-selenium</module>
+        <module>lib-xml</module>
+        <module>microformats-reltag</module>
+        <module>mimetype-filter</module>
+        <module>nutch-extensionpoints</module>
+        <module>parse-ext</module>
+        <module>parse-html</module>
+        <module>parse-js</module>
+        <module>parse-metatags</module>
+        <module>parse-replace</module>
+        <module>parse-swf</module>
+        <module>parse-tika</module>
+        <module>parse-zip</module>
+        <module>parsefilter-naivebayes</module>
+        <module>parsefilter-regex</module>
+        <module>plugin</module>
+        <module>protocol-file</module>
+        <module>protocol-ftp</module>
+        <module>protocol-htmlunit</module>
+        <module>protocol-http</module>
+        <module>protocol-httpclient</module>
+        <module>protocol-interactiveselenium</module>
+        <module>protocol-selenium</module>
+        <module>scoring-depth</module>
+        <module>scoring-link</module>
+        <module>scoring-opic</module>
+        <module>scoring-similarity</module>
+        <module>subcollection</module>
+        <module>tld</module>
+        <module>urlfilter-automaton</module>
+        <module>urlfilter-domain</module>
+        <module>urlfilter-domainblacklist</module>
+        <module>urlfilter-ignoreexempt</module>
+        <module>urlfilter-prefix</module>
+        <module>urlfilter-regex</module>
+        <module>urlfilter-suffix</module>
+        <module>urlfilter-validator</module>
+        <module>urlmeta</module>
+        <module>urlnormalizer-ajax</module>
+        <module>urlnormalizer-basic</module>
+        <module>urlnormalizer-host</module>
+        <module>urlnormalizer-pass</module>
+        <module>urlnormalizer-protocol</module>
+        <module>urlnormalizer-querystring</module>
+        <module>urlnormalizer-regex</module>
+        <module>urlnormalizer-slash</module>
+    </modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.nutch</groupId>
+            <artifactId>nutch-core</artifactId>
+            <version>1.13-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
 </project>

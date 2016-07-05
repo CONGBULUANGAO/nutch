@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <properties>
-
+        <junit.version>4.12</junit.version>
     </properties>
     <modules>
         <module>nutch-core</module>
@@ -26,6 +26,26 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>runtime/</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
