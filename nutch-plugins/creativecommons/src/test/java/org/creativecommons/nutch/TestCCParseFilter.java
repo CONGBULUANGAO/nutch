@@ -25,24 +25,24 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.nutch.util.NutchConfiguration;
 import org.junit.Assert;
 import org.junit.Test;
+import static org.apache.nutch.test.TestUtils.getFile;
 
 import java.io.*;
 
 public class TestCCParseFilter {
 
-  private static final File testDir = new File(System.getProperty("test.input"));
-
   @Test
   public void testPages() throws Exception {
-    pageTest(new File(testDir, "anchor.html"), "http://foo.com/",
+
+    pageTest(getFile(this, "anchor.html"), "http://foo.com/",
         "http://creativecommons.org/licenses/by-nc-sa/1.0", "a", null);
     // Tika returns <a> whereas parse-html returns <rel>
     // check later
-    pageTest(new File(testDir, "rel.html"), "http://foo.com/",
+    pageTest(getFile(this, "rel.html"), "http://foo.com/",
         "http://creativecommons.org/licenses/by-nc/2.0", "rel", null);
     // Tika returns <a> whereas parse-html returns <rdf>
     // check later
-    pageTest(new File(testDir, "rdf.html"), "http://foo.com/",
+    pageTest(getFile(this, "rdf.html"), "http://foo.com/",
         "http://creativecommons.org/licenses/by-nc/1.0", "rdf", "text");
   }
 

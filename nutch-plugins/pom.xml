@@ -101,13 +101,21 @@
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <libs.dir>..${file.separator}..${file.separator}${libs.subdir}</libs.dir> <!-- Note : one additional level is for the child modules-->
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.apache.nutch</groupId>
             <artifactId>nutch-core</artifactId>
-            <version>1.13-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.nutch</groupId>
+            <artifactId>nutch-core</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>test</scope>
+            <type>test-jar</type>
         </dependency>
     </dependencies>
 

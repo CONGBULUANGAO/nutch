@@ -10,6 +10,8 @@
     <packaging>pom</packaging>
 
     <properties>
+        <libs.subdir>runtime${file.separator}local${file.separator}lib</libs.subdir>
+        <libs.dir>${project.basedir}${file.separator}${libs.subdir}</libs.dir>
         <junit.version>4.12</junit.version>
     </properties>
     <modules>
@@ -32,11 +34,32 @@
                 <configuration>
                     <filesets>
                         <fileset>
-                            <directory>runtime/</directory>
+                            <directory>runtime</directory>
                             <followSymlinks>false</followSymlinks>
                         </fileset>
                     </filesets>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${libs.dir}</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                            <includeScope>runtime</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
