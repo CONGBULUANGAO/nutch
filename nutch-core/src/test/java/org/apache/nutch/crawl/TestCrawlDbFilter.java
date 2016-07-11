@@ -28,11 +28,13 @@ import org.apache.hadoop.io.SequenceFile.Reader.Option;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.*;
 import org.apache.nutch.crawl.CrawlDBTestUtil.URLCrawlDatum;
+import org.apache.nutch.test.IntegrationTest;
 import org.apache.nutch.util.NutchJob;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * CrawlDbFiltering test which tests for correct, error free url normalization
@@ -73,6 +75,7 @@ public class TestCrawlDbFilter {
    * @throws Exception
    */
   @Test
+  @Category({IntegrationTest.class})
   public void testUrl404Purging() throws Exception {
     // create a CrawlDatum with DB GONE status
     ArrayList<URLCrawlDatum> list = new ArrayList<URLCrawlDatum>();

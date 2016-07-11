@@ -17,9 +17,12 @@
 package org.apache.nutch.net;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.nutch.test.IntegrationTest;
 import org.apache.nutch.util.NutchConfiguration;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+@Category(IntegrationTest.class)
 public class TestURLFilters {
 
   /**

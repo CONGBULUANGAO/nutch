@@ -29,10 +29,12 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.SequenceFile.Reader.Option;
+import org.apache.nutch.test.IntegrationTest;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * Basic injector test: 1. Creates a text file with urls 2. Injects them into
@@ -40,6 +42,7 @@ import org.junit.Test;
  * into webdb 5. Reads crawldb entries and verifies contents
  * 
  */
+@Category({IntegrationTest.class})
 public class TestInjector {
 
   private Configuration conf;

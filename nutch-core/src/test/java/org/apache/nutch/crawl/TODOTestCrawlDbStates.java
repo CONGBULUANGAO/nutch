@@ -3,14 +3,17 @@ package org.apache.nutch.crawl;
 import static org.apache.nutch.crawl.CrawlDatum.*;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.nutch.test.IntegrationTest;
 import org.apache.nutch.util.TimingUtil;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Category({ IntegrationTest.class})
 public class TODOTestCrawlDbStates extends TestCrawlDbStates {
 
   private static final Logger LOG = LoggerFactory

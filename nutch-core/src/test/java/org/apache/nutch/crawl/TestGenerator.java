@@ -28,10 +28,12 @@ import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.SequenceFile.Reader.Option;
 import org.apache.nutch.crawl.CrawlDBTestUtil.URLCrawlDatum;
+import org.apache.nutch.test.IntegrationTest;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * Basic generator test. 1. Insert entries in crawldb 2. Generates entries to
@@ -39,6 +41,7 @@ import org.junit.Test;
  * highest scoring urls are generated
  * 
  */
+@Category({IntegrationTest.class})
 public class TestGenerator {
 
   Configuration conf;

@@ -19,6 +19,8 @@ package org.apache.nutch.tools;
 
 //Junit imports
 import static org.junit.Assert.*;
+
+import org.apache.nutch.test.TestUtils;
 import org.junit.Test;
 
 //Commons imports
@@ -43,8 +45,7 @@ public class TestCommonCrawlDataDumper {
 
   @Test
   public void testDump() throws Exception {
-    File sampleSegmentDir = new File(System.getProperty("test.build.data",
-        "."), "test-segments");
+    File sampleSegmentDir = TestUtils.getFile(this, "test-segments");
     File tempDir = Files.createTempDirectory("temp").toFile();
 
     String[] crawledFiles = {

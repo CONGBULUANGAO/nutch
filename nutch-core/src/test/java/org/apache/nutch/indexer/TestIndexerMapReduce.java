@@ -30,8 +30,10 @@ import org.apache.nutch.parse.ParseData;
 import org.apache.nutch.parse.ParseStatus;
 import org.apache.nutch.parse.ParseText;
 import org.apache.nutch.protocol.Content;
+import org.apache.nutch.test.IntegrationTest;
 import org.apache.nutch.util.NutchConfiguration;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -99,6 +101,7 @@ public class TestIndexerMapReduce {
    * Test indexing of base64-encoded binary content.
    */
   @Test
+  @Category(IntegrationTest.class)
   public void testBinaryContentBase64() {
     configuration = NutchConfiguration.create();
     configuration.setBoolean(IndexerMapReduce.INDEXER_BINARY_AS_BASE64, true);

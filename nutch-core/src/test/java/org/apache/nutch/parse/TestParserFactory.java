@@ -20,10 +20,12 @@ package org.apache.nutch.parse;
 // Nutch imports
 import org.apache.nutch.plugin.Extension;
 import org.apache.hadoop.conf.Configuration;
+import org.apache.nutch.test.IntegrationTest;
 import org.apache.nutch.util.NutchConfiguration;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * Unit test for new parse plugin selection.
@@ -31,6 +33,7 @@ import org.junit.Test;
  * @author Sebastien Le Callonnec
  * @version 1.0
  */
+@Category(IntegrationTest.class)
 public class TestParserFactory {
 
   private Configuration conf;

@@ -28,16 +28,19 @@ import java.util.Properties;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.mapred.JobConf;
+import org.apache.nutch.test.IntegrationTest;
 import org.apache.nutch.util.NutchConfiguration;
 import org.apache.nutch.util.NutchJob;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * Unit tests for the plugin system
  */
+@Category(IntegrationTest.class)
 public class TestPluginSystem {
   private int fPluginCount;
 

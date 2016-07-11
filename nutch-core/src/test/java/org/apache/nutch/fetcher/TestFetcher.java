@@ -32,10 +32,12 @@ import org.apache.nutch.metadata.Metadata;
 import org.apache.nutch.metadata.Nutch;
 import org.apache.nutch.parse.ParseData;
 import org.apache.nutch.protocol.Content;
+import org.apache.nutch.test.IntegrationTest;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mortbay.jetty.Server;
 
 /**
@@ -79,6 +81,7 @@ public class TestFetcher {
   }
 
   @Test
+  @Category(IntegrationTest.class)
   public void testFetch() throws IOException, ClassNotFoundException, InterruptedException {
 
     // generate seedlist

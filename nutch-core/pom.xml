@@ -456,6 +456,11 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${project.parent.basedir}${file.separator}conf</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -494,6 +499,23 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <excludedGroups>org.apache.nutch.test.IntegrationTest</excludedGroups>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <plugin.folders>../runtime/local/plugins</plugin.folders>
+                    </systemPropertyVariables>
+                </configuration>
             </plugin>
         </plugins>
     </build>

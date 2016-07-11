@@ -18,6 +18,7 @@
 package org.apache.nutch.util;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
@@ -26,6 +27,7 @@ import org.apache.hadoop.conf.Configuration;
 import com.google.common.io.Files;
 
 import junit.framework.TestCase;
+import org.apache.nutch.test.TestUtils;
 
 public class TestMimeUtil extends TestCase {
 
@@ -33,8 +35,14 @@ public class TestMimeUtil extends TestCase {
 
   private static Charset defaultCharset = Charset.forName("UTF-8");
 
-  private File sampleDir = new File(System.getProperty("test.build.data", "."),
-      "test-mime-util");
+  private File sampleDir;
+  {
+    try {
+      sampleDir = TestUtils.getFile(this, "test-mime-util");
+    } catch (FileNotFoundException e){
+      throw new RuntimeException(e);
+    }
+  }
 
   /**
    * test data, every element on "test page":

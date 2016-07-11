@@ -30,11 +30,13 @@ import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.MapFile.Writer.Option;
 import org.apache.hadoop.mapred.JobConf;
+import org.apache.nutch.test.IntegrationTest;
 import org.apache.nutch.util.NutchConfiguration;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class TestCrawlDbMerger {
   private static final Logger LOG = Logger.getLogger(CrawlDbMerger.class
@@ -110,6 +112,7 @@ public class TestCrawlDbMerger {
    * @throws Exception
    */
   @Test
+  @Category({IntegrationTest.class})
   public void testMerge() throws Exception {
     Path crawldb1 = new Path(testDir, "crawldb1");
     Path crawldb2 = new Path(testDir, "crawldb2");

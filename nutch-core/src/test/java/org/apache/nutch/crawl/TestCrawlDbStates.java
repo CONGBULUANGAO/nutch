@@ -35,8 +35,10 @@ import org.apache.nutch.scoring.ScoringFilters;
 
 import static org.junit.Assert.*;
 
+import org.apache.nutch.test.IntegrationTest;
 import org.junit.Test;
 
+import org.junit.experimental.categories.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,6 +59,7 @@ import org.slf4j.LoggerFactory;
  * </ul>
  * </li> </ul>
  */
+@Category({IntegrationTest.class})
 public class TestCrawlDbStates {
 
   private static final Logger LOG = LoggerFactory
