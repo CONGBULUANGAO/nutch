@@ -113,7 +113,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <slf4j.version>1.7.12</slf4j.version>
         <junit.version>4.12</junit.version>
-        <libs.dir>${project.parent.basedir}${file.separator}${libs.subdir}</libs.dir>
+        <dir.root>${project.parent.basedir}</dir.root>
+        <libs.dir>${dir.local}${file.separator}lib</libs.dir>
     </properties>
 
     <dependencies>
@@ -468,7 +469,32 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${libs.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <include>${build.finalName}.jar</include>
+                                </resource>
+                                <resource>
+                                    <directory>${project.basedir}</directory>
+                                    <include>plugin.xml</include>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
 </project>

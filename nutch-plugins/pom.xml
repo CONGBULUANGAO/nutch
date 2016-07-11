@@ -32,6 +32,7 @@
     <url>http://nutch.apache.org</url>
 
     <modules>
+        <!--<module>indexer-solr</module>-->
         <module>creativecommons</module>
         <module>feed</module>
         <module>headings</module>
@@ -101,7 +102,9 @@
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <libs.dir>..${file.separator}..${file.separator}${libs.subdir}</libs.dir> <!-- Note : one additional level is for the child modules-->
+        <!-- Note : an additional level is for the child modules (defined ahead in hierarchy)-->
+        <dir.root>..${file.separator}..${file.separator}</dir.root>
+        <libs.dir>${dir.local.plugins}${file.separator}${project.artifactId}</libs.dir>
     </properties>
     <dependencies>
         <dependency>
@@ -118,5 +121,35 @@
             <type>test-jar</type>
         </dependency>
     </dependencies>
-
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${libs.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}</directory>
+                                    <include>${build.finalName}.jar</include>
+                                </resource>
+                                <resource>
+                                    <directory>${project.basedir}</directory>
+                                    <include>plugin.xml</include>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

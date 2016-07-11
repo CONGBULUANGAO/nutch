@@ -10,8 +10,10 @@
     <packaging>pom</packaging>
 
     <properties>
-        <libs.subdir>runtime${file.separator}local${file.separator}lib</libs.subdir>
-        <libs.dir>${project.basedir}${file.separator}${libs.subdir}</libs.dir>
+        <dir.root>${project.basedir}</dir.root>
+        <dir.local>${dir.root}${file.separator}runtime${file.separator}local</dir.local>
+        <dir.local.libs>${dir.local}${file.separator}libs</dir.local.libs>
+        <dir.local.plugins>${dir.local}${file.separator}plugins</dir.local.plugins>
         <junit.version>4.12</junit.version>
     </properties>
     <modules>
@@ -37,6 +39,14 @@
                             <directory>runtime</directory>
                             <followSymlinks>false</followSymlinks>
                         </fileset>
+                        <fileset>
+                            <directory>${dir.local.libs}</directory>
+                            <includes>
+                                <include>**/*.jar</include>
+                                <include>**/*.xml</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
                     </filesets>
                 </configuration>
             </plugin>
@@ -57,6 +67,43 @@
                             <overWriteSnapshots>false</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
                             <includeScope>runtime</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-scripts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${dir.local}${file.separator}bin</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>bin</directory>
+                                    <!-- This plugin doesn't preserve permissions, so the scripts aren't executable-->
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-conf</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${dir.local}${file.separator}conf</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>conf</directory>
+                                </resource>
+                            </resources>
                         </configuration>
                     </execution>
                 </executions>
